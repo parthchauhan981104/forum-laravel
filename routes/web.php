@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('discussions', 'DiscussionsController');
-
-Route::resource('discussions/{discussion}/replies', 'RepliesController');
-
-Route::post('discussions/{discussion}/replies/{reply}/mark-as-best', 'DiscussionsController@markBestReply')->name('discussions.mark-best-reply');
-
-Route::post('discussions/{discussion}/replies/{reply}/unmark-as-best', 'DiscussionsController@unmarkBestReply')->name('discussions.unmark-best-reply');
-
-Route::get('/users/notifications', [UsersController::class, 'notifications'])->name('users.notifications'); 

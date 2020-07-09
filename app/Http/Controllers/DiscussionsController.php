@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateDiscussionRequest;
 use Illuminate\Support\Str;
 use App\Discussion;
-use App\Reply;
 
 class DiscussionsController extends Controller
 {
@@ -14,7 +13,7 @@ class DiscussionsController extends Controller
     public function __construct()
     {
         //all users can see discussions without authentication but not create
-        $this->middleware(['auth', 'verified'])->only(['create', 'store']);
+        $this->middleware('auth')->only(['create', 'store']);
     }
 
     /**
@@ -25,7 +24,7 @@ class DiscussionsController extends Controller
     public function index()
     {
         return view('discussions.index', [
-            'discussions' => Discussion::filterByChannels()->paginate(3)
+            'discussions' => Discussion::paginate(5)
         ]);
     }
 
@@ -105,23 +104,5 @@ class DiscussionsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function markBestReply(Discussion $discussion, Reply $reply) //using slug for discussion, id for reply
-    {
-        $discussion->markAsBestReply($reply);
-
-        session()->flash('success', 'Reply marked as best reply.');
-
-        return redirect()->back();
-    }
-
-    public function unmarkBestReply(Discussion $discussion, Reply $reply) //using slug for discussion, id for reply
-    {
-        $discussion->unmarkAsBestReply($reply);
-
-        session()->flash('success', 'Reply unmarked as best reply.');
-
-        return redirect()->back();
     }
 }

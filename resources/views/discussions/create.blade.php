@@ -4,7 +4,7 @@
 
 
 <div class="card">
-    <div class="card-header">Start Discussion</div>
+    <div class="card-header">Add Discussion</div>
 
     <div class="card-body"> 
         <form action="{{route('discussions.store')}}" method="post">

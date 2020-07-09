@@ -20,7 +20,6 @@ class CreateDiscussionsTable extends Migration
             $table->string('slug')->unique(); // for storing slug of title eg. hello world => hello-world
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('channel_id');
-            $table->unsignedBigInteger('reply_id')->nullable(); //best reply
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
