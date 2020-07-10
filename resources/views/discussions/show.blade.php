@@ -53,7 +53,34 @@
         <div class="card-body text-center">
             {!! $discussion->bestReply->content !!}
         </div>
-
+        <div class="d-flex card-footer justify-content-between">
+            @auth
+            <div class="my-auto">
+            @if($discussion->bestReply->isLikedByAuthUser())
+                <form action="{{route('reply.unlike', ['reply' => $discussion->bestReply->id])}}" method="post">
+                    @csrf
+                    
+                    <button type="submit" class="btn btn-danger btn-sm my-auto">
+                        Unlike
+                    </button>
+                </form>
+            @else
+                <form action="{{route('reply.like', ['reply' => $discussion->bestReply->id])}}" method="post">
+                    @csrf
+                    
+                    <button type="submit" class="btn btn-primary btn-sm my-auto">
+                        Like
+                    </button>
+                </form>
+            @endif
+            </div>
+            @endauth
+            <div class="my-auto">
+                <span class="badge ml-2 my-auto">{{$discussion->bestReply->likes->count() }}
+                    Likes
+                </span>
+            </div>
+        </div>
     </div>
 @endif
 </div>
@@ -118,6 +145,34 @@
                 </div>
                 <div class="text-center card-body">
                     {!! $reply->content !!}
+                </div>
+                <div class="d-flex card-footer justify-content-between">
+                    @auth
+                    <div class="my-auto">
+                    @if($reply->isLikedByAuthUser())
+                        <form action="{{route('reply.unlike', ['reply' => $reply->id])}}" method="post">
+                            @csrf
+                            
+                            <button type="submit" class="btn btn-danger btn-sm my-auto">
+                                Unlike
+                            </button>
+                        </form>
+                    @else
+                        <form action="{{route('reply.like', ['reply' => $reply->id])}}" method="post">
+                            @csrf
+                            
+                            <button type="submit" class="btn btn-primary btn-sm my-auto">
+                                Like
+                            </button>
+                        </form>
+                    @endif
+                    </div>
+                    @endauth
+                    <div class="my-auto">
+                        <span class="badge ml-2 my-auto">{{$reply->likes->count() }}
+                            Likes
+                        </span>
+                    </div>
                 </div>
             </div>
         @endif

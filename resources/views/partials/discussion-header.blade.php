@@ -1,6 +1,6 @@
 <div class="card-header">
 	<div class="d-flex justify-content-between">
-		<div>
+		<div class="my-auto">
 			<img class="user-img" src="{{Gravatar::src($discussion->author->email)}}" alt="">
     		<span class="ml-2">{{ucwords($discussion->author->name)}}</span>
 		</div>

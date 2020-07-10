@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateReplyRequest;
 use App\Discussion;
 use App\Notifications\NewReplyAdded;
+use App\Reply;
+use App\Like;
 
 class RepliesController extends Controller
 {
@@ -95,5 +97,22 @@ class RepliesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function like(Reply $reply)
+    {
+        Like::create([
+            'reply_id' => $reply->id,
+            'user_id' => auth()->user()->id
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function unlike(Reply $reply)
+    {
+        Like::where('reply_id', $reply->id)->where('user_id', auth()->user()->id)->delete();
+
+        return redirect()->back();
     }
 }

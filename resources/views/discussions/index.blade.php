@@ -13,6 +13,11 @@
 	    		<strong>{{$discussion->title}}</strong>
 	    	</div>
 	    </div>
+	    <div class="card-footer my-auto">
+	    	<p class="my-auto float-left">
+	    		{{$discussion->replies->count() }} Replies
+	    	</p>
+	    </div>
 	</div>
 @endforeach
 

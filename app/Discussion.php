@@ -57,7 +57,7 @@ class Discussion extends Model
 
             if($channel){
 
-                return $builder->where('channel_id', $channel->id);
+                return $query->where('channel_id', $channel->id);
             }
 
         }
