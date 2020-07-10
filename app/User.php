@@ -9,7 +9,6 @@ use App\Notifications\VerifyEmail;
 use App\Discussion;
 use App\Reply;
 
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
@@ -51,7 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Reply::class);
     }
 
-        /**
+    /**
      * Send the email verification notification.
      *
      * @return void

@@ -30,7 +30,7 @@ Route::post('discussions/{discussion}/replies/{reply}/mark-as-best', 'Discussion
 
 Route::post('discussions/{discussion}/replies/{reply}/unmark-as-best', 'DiscussionsController@unmarkBestReply')->name('discussions.unmark-best-reply');
 
-Route::get('/users/notifications', [UsersController::class, 'notifications'])->name('users.notifications'); 
+Route::get('/users/notifications', [UsersController::class, 'notifications'])->name('users.notifications');
 
 Route::post('/reply/{reply}/like', 'RepliesController@like')->name('reply.like');
 

@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //share data between views
         
-       View::share('channels', Channel::all());
-       
+        View::share('channels', Channel::all());
     }
 }

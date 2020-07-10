@@ -9,5 +9,4 @@ use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
 class VerifyEmail extends BaseVerifyEmail implements ShouldQueue
 {
     use Queueable;
-
 }

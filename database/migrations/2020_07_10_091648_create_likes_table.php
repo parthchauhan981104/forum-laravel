@@ -22,7 +22,6 @@ class CreateLikesTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('reply_id')->references('id')->on('replies')->onDelete('cascade');
-
         });
     }
 

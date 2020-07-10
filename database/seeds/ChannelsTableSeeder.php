@@ -14,23 +14,23 @@ class ChannelsTableSeeder extends Seeder
     public function run()
     {
         Channel::create([
-        	'name' => 'Laravel 7',
-        	'slug' => Str::slug('Laravel 7', '-')
+            'name' => 'Laravel 7',
+            'slug' => Str::slug('Laravel 7', '-')
         ]);
 
         Channel::create([
-        	'name' => 'HTML',
-        	'slug' => Str::slug('HTML', '-')
+            'name' => 'HTML',
+            'slug' => Str::slug('HTML', '-')
         ]);
 
         Channel::create([
-        	'name' => 'JavaScript',
-        	'slug' => Str::slug('JavaScript', '-')
+            'name' => 'JavaScript',
+            'slug' => Str::slug('JavaScript', '-')
         ]);
 
         Channel::create([
-        	'name' => 'MySQL',
-        	'slug' => Str::slug('MySQL', '-')
+            'name' => 'MySQL',
+            'slug' => Str::slug('MySQL', '-')
         ]);
     }
 }

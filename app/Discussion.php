@@ -8,7 +8,6 @@ use App\Notifications\ReplyMarkedAsBestReply;
 
 class Discussion extends Model
 {
-
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -30,11 +29,9 @@ class Discussion extends Model
             'reply_id' => $reply->id
         ]);
 
-        if($reply->user->id !== $this->author->id){
-
+        if ($reply->user->id !== $this->author->id) {
             $reply->user->notify(new ReplyMarkedAsBestReply($reply->discussion));
         }
-
     }
 
     public function unmarkAsBestReply(Reply $reply)
@@ -51,18 +48,14 @@ class Discussion extends Model
 
     public function scopeFilterByChannels($query) //a chainable method to the queryBuilder
     {
-        if(request()->query('channel')){
-
+        if (request()->query('channel')) {
             $channel = Channel::where('slug', request()->query('channel'))->first();
 
-            if($channel){
-
+            if ($channel) {
                 return $query->where('channel_id', $channel->id);
             }
-
         }
 
         return $query;
-
     }
 }

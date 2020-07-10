@@ -10,11 +10,10 @@ use App\Reply;
 
 class DiscussionsController extends Controller
 {
-    
     public function __construct()
     {
         //all users can see discussions without authentication but not create
-        $this->middleware(['auth', 'verified'])->only(['create', 'store']); 
+        $this->middleware(['auth', 'verified'])->only(['create', 'store']);
     }
 
     /**

@@ -1,10 +1,10 @@
 <?php
 
 namespace App;
+
 use App\User;
 use App\Discussion;
 use App\Like;
-
 
 class Reply extends Model
 {
@@ -29,12 +29,11 @@ class Reply extends Model
 
         $likers = array();
 
-        foreach($this->likes as $like):
+        foreach ($this->likes as $like):
             array_push($likers, $like->user_id);
         endforeach;
 
 
         return in_array($id, $likers);
     }
-
 }

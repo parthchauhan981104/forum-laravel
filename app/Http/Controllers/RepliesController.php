@@ -44,8 +44,7 @@ class RepliesController extends Controller
             'content' => $request->reply
         ]);
 
-        if($discussion->author->id !== auth()->user()->id){
-
+        if ($discussion->author->id !== auth()->user()->id) {
             $discussion->author->notify(new NewReplyAdded($discussion)); //send mail notification to user and save notification to database
         }
 
